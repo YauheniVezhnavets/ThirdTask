@@ -17,17 +17,14 @@ public class ConeParser {
         double pointOfCenterX = Double.parseDouble(dataOfDoubles[1]);
         double pointOfCenterY = Double.parseDouble(dataOfDoubles[2]);
         double pointOfCenterZ = Double.parseDouble(dataOfDoubles[3]);
-        double pointOnCircleX=Double.parseDouble(dataOfDoubles[4]);
-        double pointOnCircleY=Double.parseDouble(dataOfDoubles[5]);
-        double pointOnCircleZ=Double.parseDouble(dataOfDoubles[6]);
-        double apexOfConeX=Double.parseDouble(dataOfDoubles[7]);
-        double apexOfConeY=Double.parseDouble(dataOfDoubles[8]);
-        double apexOfConeZ=Double.parseDouble(dataOfDoubles[9]);
+        double apexOfConeX=Double.parseDouble(dataOfDoubles[4]);
+        double apexOfConeY=Double.parseDouble(dataOfDoubles[5]);
+        double apexOfConeZ=Double.parseDouble(dataOfDoubles[6]);
 
 
 
-        return new Cone(new Circle(radius,new Point(pointOfCenterX,pointOfCenterY,pointOfCenterZ),
-                new Point(pointOnCircleX,pointOnCircleY,pointOnCircleZ)),new Point(apexOfConeX,apexOfConeY,apexOfConeZ));
+        return new Cone(new Circle(radius,new Point(pointOfCenterX,pointOfCenterY,pointOfCenterZ)),
+                new Point(apexOfConeX,apexOfConeY,apexOfConeZ));
     }
 
 }

@@ -1,27 +1,30 @@
 package com.epam.task.third.enteties;
 
 public class Circle {
-    private final double radius;
-    private final Point centerOfCircle;
-    private final Point pointOnCircle;
+    private double radius;
+    private Point centerOfCircle;
 
 
-    public Circle(double radius, Point centerOfCircle, Point pointOnCircle) {
+    public Circle(double radius, Point centerOfCircle) {
         this.radius = radius;
         this.centerOfCircle = centerOfCircle;
-        this.pointOnCircle = pointOnCircle;
     }
 
     public double getRadius() {
         return radius;
     }
 
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
     public Point getCenterOfCircle() {
         return centerOfCircle;
     }
 
-    public Point getPointOnCircle() {
-        return pointOnCircle;
+
+    public void setCenterOfCircle(Point centerOfCircle) {
+        this.centerOfCircle = centerOfCircle;
     }
 
     @Override
@@ -32,9 +35,7 @@ public class Circle {
         Circle circle = (Circle) o;
 
         if (Double.compare(circle.getRadius(), getRadius()) != 0) return false;
-        if (getCenterOfCircle() != null ? !getCenterOfCircle().equals(circle.getCenterOfCircle()) : circle.getCenterOfCircle() != null)
-            return false;
-        return getPointOnCircle() != null ? getPointOnCircle().equals(circle.getPointOnCircle()) : circle.getPointOnCircle() == null;
+        return getCenterOfCircle() != null ? getCenterOfCircle().equals(circle.getCenterOfCircle()) : circle.getCenterOfCircle() == null;
     }
 
     @Override
@@ -44,13 +45,11 @@ public class Circle {
         temp = Double.doubleToLongBits(getRadius());
         result = (int) (temp ^ (temp >>> 32));
         result = 31 * result + (getCenterOfCircle() != null ? getCenterOfCircle().hashCode() : 0);
-        result = 31 * result + (getPointOnCircle() != null ? getPointOnCircle().hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Circle{" +  "radius=" + radius +  ", centerOfCircle=" + centerOfCircle + "," +
-                " pointOnCircle=" + pointOnCircle + '}';
+        return "Circle{" + "radius=" + radius + ", centerOfCircle=" + centerOfCircle + '}';
     }
 }

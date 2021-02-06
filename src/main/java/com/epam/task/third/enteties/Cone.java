@@ -1,21 +1,39 @@
 package com.epam.task.third.enteties;
 
 public class Cone {
-    private final Circle circle;
-    private final Point apexOfCone;
+    private static int count;
+    private int id;
+    private Circle circle;
+    private Point apexOfCone;
 
 
     public Cone(Circle circle, Point apexOfCone) {
         this.circle = circle;
         this.apexOfCone = apexOfCone;
+        count++;
+        this.id=count;
     }
+
+    public int getId() {
+        return id;
+    }
+
+
 
     public Circle getCircle() {
         return circle;
     }
 
+    public void setCircle(Circle circle) {
+        this.circle = circle;
+    }
+
     public Point getApexOfCone() {
         return apexOfCone;
+    }
+
+    public void setApexOfCone(Point apexOfCone) {
+        this.apexOfCone = apexOfCone;
     }
 
     @Override
