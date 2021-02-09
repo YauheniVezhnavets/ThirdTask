@@ -11,19 +11,21 @@ import java.util.List;
 
 public class ConeCreator {
     private final DataReader dataReader;
-    private final ConeParser coneParser;
     private final ConeValidator coneValidator;
+    private final ConeParser coneParser;
 
-    public ConeCreator(DataReader dataReader, ConeParser coneParser, ConeValidator coneValidator) {
+
+    public ConeCreator(DataReader dataReader,ConeValidator coneValidator, ConeParser coneParser) {
         this.dataReader = dataReader;
-        this.coneParser = coneParser;
         this.coneValidator = coneValidator;
+        this.coneParser = coneParser;
+
     }
 
     public List<Cone> create(String filename) throws DataException {
 
         List<String> stringLines = dataReader.readData(filename);
-        List<Cone> listOfCone = new ArrayList<Cone>();
+        List<Cone> listOfCone = new ArrayList<>();
 
         for (String stringLine : stringLines) {
             if (coneValidator.validate(stringLine)) {

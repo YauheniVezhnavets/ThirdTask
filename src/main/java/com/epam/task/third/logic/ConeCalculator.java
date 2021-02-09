@@ -5,11 +5,62 @@ import com.epam.task.third.enteties.Cone;
 import com.epam.task.third.enteties.Point;
 
 public class ConeCalculator {
+
     final int DEGREE = 2;
 
     public boolean isCorrectRadius(double radius) {
         return radius > 0;
     }
+
+    public boolean isCone(Cone cone) {
+        Circle circle = cone.getCircle();
+        if (!isCorrectRadius(circle.getRadius())) {
+            return false;
+        }
+        Point pointOfApexCone = cone.getApexOfCone();
+        Point pointOfCenter = circle.getCenterOfCircle();
+
+        if ((pointOfCenter.getX() == pointOfApexCone.getX()) && (pointOfCenter.getY() == pointOfApexCone.getY())
+                && (pointOfCenter.getZ() != pointOfApexCone.getZ())) {
+            return true;
+        } else if ((pointOfCenter.getX() == pointOfApexCone.getX()) && (pointOfCenter.getZ() == pointOfApexCone.getZ())
+                && (pointOfCenter.getY() != pointOfApexCone.getY())) {
+            return true;
+        } else
+            return (pointOfCenter.getY() == pointOfApexCone.getY()) && (pointOfCenter.getZ() == pointOfApexCone.getZ())
+                    && (pointOfCenter.getX() != pointOfApexCone.getX());
+    }
+
+
+    public double separateCone(Cone cone, double lengthOfSeparationCone) {
+        if (lengthOfSeparationCone == 0) {
+            return 1;
+        }
+        Circle circleOfCone = cone.getCircle();
+
+        double coneHeight = calculateConeHeight(cone.getApexOfCone(), circleOfCone.getCenterOfCircle());
+        double tangentOfAngle = Math.tan(circleOfCone.getRadius() / coneHeight);
+
+        double newConeHeight = Math.abs(coneHeight - lengthOfSeparationCone);
+        double newRadius = newConeHeight * tangentOfAngle;
+        double newAreaOfCircle = Math.PI * Math.pow(newRadius, DEGREE);
+
+        double newAreaCone = newAreaOfCircle * newConeHeight / 3;
+        double coneArea = calculateVolume(cone);
+
+        return newAreaCone / (coneArea - newAreaCone);
+    }
+
+    public boolean isCircleOnCoordinatePlane (Cone cone){
+        Circle circleOfCone = cone.getCircle();
+        Point centerOfCircle = circleOfCone.getCenterOfCircle();
+
+        return ((centerOfCircle.getX()!=0)&&(centerOfCircle.getY()!=0)&&(centerOfCircle.getZ()==0)||
+                (centerOfCircle.getX()!=0)&&(centerOfCircle.getZ()!=0)&&(centerOfCircle.getY()==0))||
+                (centerOfCircle.getY()!=0)&&(centerOfCircle.getZ()!=0)&&(centerOfCircle.getX()==0);
+
+    }
+
 
     public double calculateArea(Cone cone) {
         Circle circleOfCone = cone.getCircle();

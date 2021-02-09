@@ -12,12 +12,18 @@ public class ConeObserver implements Observer {
     private final static ConeObserver INSTANCE = new ConeObserver();
     private ConeCalculator coneCalculator;
     private Map<Integer, ConeParameters> parameters = new HashMap<>();
-    private ConeObservable coneObservable;
 
-    private ConeObserver(){}
+
+    private ConeObserver(){
+        this.coneCalculator = new ConeCalculator();
+    }
 
     public static ConeObserver getInstance(){
         return INSTANCE;
+    }
+
+    public Map<Integer, ConeParameters> getParameters() {
+        return parameters;
     }
 
     @Override

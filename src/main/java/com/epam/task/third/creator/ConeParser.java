@@ -22,7 +22,6 @@ public class ConeParser {
         double apexOfConeZ=Double.parseDouble(dataOfDoubles[6]);
 
 
-
         return new Cone(new Circle(radius,new Point(pointOfCenterX,pointOfCenterY,pointOfCenterZ)),
                 new Point(apexOfConeX,apexOfConeY,apexOfConeZ));
     }

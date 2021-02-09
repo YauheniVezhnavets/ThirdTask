@@ -1,6 +1,8 @@
 package com.epam.task.third.repository;
 
+import com.epam.task.third.enteties.Circle;
 import com.epam.task.third.enteties.Cone;
+import com.epam.task.third.repository.specifications.ConeSpecification;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,9 +28,9 @@ public class MapOfConeRepository implements ConeRepository {
     }
 
     @Override
-    public void updateCone(Cone cone) {
-        //it's incorrect
-        cone.setCircle(cone.getCircle());
+    public void updateCone(Cone cone, double newRadius) {
+        Circle circle = cone.getCircle();
+        circle.setRadius(newRadius);
     }
 
     @Override
