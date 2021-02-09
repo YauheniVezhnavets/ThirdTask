@@ -20,10 +20,13 @@ import static org.mockito.Mockito.when;
 
 public class ConeCreatorTest {
 
-    public final static List<String> TEST_DATA = Arrays.asList("2.0 0.0 0.0 0.0 0.0 3.0 0.0", "4.0 1.0 1.0 1.0 1.0 5.0 1.0");
+    public final static List<String> TEST_DATA = Arrays.asList("2.0 0.0 0.0 0.0 0.0 3.0 0.0",
+            "4.0 1.0 1.0 1.0 1.0 5.0 1.0");
     private final static String EMPTY_STRING = "";
-    private final Cone FIRST_CONE = new Cone(new Circle(2.0, new Point(0.0, 0.0, 0.0)), new Point(0.0, 3.0, 0.0));
-    private final Cone SECOND_CONE = new Cone(new Circle(4.0, new Point(1.0, 1.0, 1.0)), new Point(1.0, 5.0, 1.0));
+    private final Cone FIRST_CONE = new Cone(new Circle(2.0, new Point(0.0, 0.0, 0.0)),
+            new Point(0.0, 3.0, 0.0));
+    private final Cone SECOND_CONE = new Cone(new Circle(4.0, new Point(1.0, 1.0, 1.0)),
+            new Point(1.0, 5.0, 1.0));
 
     @Test
     public void testCreateShouldCreateArrayWhenFileHaveCorrectData() throws DataException {
@@ -35,8 +38,10 @@ public class ConeCreatorTest {
         when(validator.validate(anyString())).thenReturn(true);
 
         ConeParser parser = Mockito.mock(ConeParser.class);
-        when(parser.parse("2.0 0.0 0.0 0.0 0.0 3.0 0.0")).thenReturn(new Cone(new Circle(2.0, new Point(0.0, 0.0, 0.0)), new Point(0.0, 3.0, 0.0)));
-        when(parser.parse("4.0 1.0 1.0 1.0 1.0 5.0 1.0")).thenReturn(new Cone(new Circle(4.0, new Point(1.0, 1.0, 1.0)), new Point(1.0, 5.0, 1.0)));
+        when(parser.parse("2.0 0.0 0.0 0.0 0.0 3.0 0.0")).thenReturn(new Cone(new Circle(2.0,
+                new Point(0.0, 0.0, 0.0)), new Point(0.0, 3.0, 0.0)));
+        when(parser.parse("4.0 1.0 1.0 1.0 1.0 5.0 1.0")).thenReturn(new Cone(new Circle(4.0,
+                new Point(1.0, 1.0, 1.0)), new Point(1.0, 5.0, 1.0)));
 
 
         ConeCreator coneCreator = new ConeCreator(reader, validator, parser);
